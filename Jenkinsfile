@@ -18,7 +18,7 @@ pipeline {
 
             steps {
                 git branch: 'main',
-                url: 'https://github.com/NetTech-Trainer/flaskapp.git'
+                url: 'https://github.com/priyankasawant623/flaskapp.git'
             }
 
         }
@@ -35,7 +35,9 @@ pipeline {
 
             steps {
                 sh '''
-                aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 410003306855.dkr.ecr.ap-south-1.amazonaws.com
+                aws ecr get-login-password --region ${AWS_REGION} | \
+                docker login --username AWS --password-stdin ${ECR_REGISTRY}
+                '''
             }
 
         }
