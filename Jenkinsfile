@@ -5,8 +5,8 @@ pipeline {
     environment {
 
         AWS_REGION = "ap-south-1"
-        ECR_REGISTRY = "435264620844.dkr.ecr.ap-south-1.amazonaws.com"
-        ECR_REPO = "project"
+        ECR_REGISTRY = "410003306855.dkr.ecr.ap-south-1.amazonaws.com"
+        ECR_REPO = "priyanka623/flaskapp"
         IMAGE_TAG = "latest"
         IMAGE_NAME = "${ECR_REGISTRY}/${ECR_REPO}:${IMAGE_TAG}"
 
@@ -35,9 +35,7 @@ pipeline {
 
             steps {
                 sh '''
-                aws ecr get-login-password --region ${AWS_REGION} | \
-                docker login --username AWS --password-stdin ${ECR_REGISTRY}
-                '''
+                aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 410003306855.dkr.ecr.ap-south-1.amazonaws.com
             }
 
         }
